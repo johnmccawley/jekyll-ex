@@ -1,60 +1,77 @@
-Jekyll Docker Images
-====================
+# Frisco
 
-This repository contains the source for building static websites using
-[Jekyll](https://jekyllrb.com/) that will be served with
-[nginx 1.8](http://nginx.org/) for a reproducible Docker image using
-[source-to-image](https://github.com/openshift/source-to-image).
-The resulting image can be run using [Docker](http://docker.io) or preferably
-hosted in OpenShift.
+App promotion themed template for Jekyll. Browse through a [live demo](https://brave-submarine.cloudvent.net/).
+Increase the web presence of a App with this configurable theme.
 
-For more information about using these images with OpenShift, please see the
-official [OpenShift Documentation](https://docs.openshift.org/latest/using_images/s2i_images/ruby.html).
+![Frisco template screenshot](images/_screenshot.jpg)
 
-Versions
----------------
-Ruby versions currently provided are:
-* ruby-2.2
+Frisco was made by [CloudCannon](http://cloudcannon.com/), the Cloud CMS for Jekyll.
+Find more templates and themes at [Jekyll Tips](http://jekyll.tips/templates/).
 
-nginx versions currently provided are:
-* nginx-1.8
+Learn Jekyll with step-by-step tutorials and videos at [Jekyll Tips](http://jekyll.tips/).
 
-CentOS versions currently supported are:
-* CentOS7
+## Features
 
-Installation
----------------
-To build the Jekyll Builder Ruby image:
-*  **CentOS based image**
+* Contact form
+* Pre-built pages
+* Pre-styled components
+* Blog with pagination
+* Post category pages
+* Disqus comments for posts
+* Staff and author system
+* Configurable footer
+* Optimised for editing in [CloudCannon](http://cloudcannon.com/)
+* RSS/Atom feed
+* SEO tags
+* Google Analytics
 
-    This image is available on DockerHub. To download it run:
+## Setup
 
-    ```
-    $ docker pull mrjoshuap/s2i-jekyll-nginx-18-centos7
-    ```
+1. Add your site and author details in `_config.yml`.
+2. Add your Google Analytics and Disqus keys to `_config.yml`.
+3. Get a workflow going to see your site's output (with [CloudCannon](https://app.cloudcannon.com/) or Jekyll locally).
 
-    To build this image from scratch run:
+## Develop
 
-    ```
-    $ git clone https://github.com/mrjoshuap/s2i-jekyll-nginx-18-centos7.git
-    $ cd s2i-jekyll-nginx-18-centos7
-    $ make
-    ```
+Frisco was built with [Jekyll](http://jekyllrb.com/) version 3.3.1, but should support newer versions as well.
 
-Usage
----------------------------------
-To build a Jekyll application image:
+Install the dependencies with [Bundler](http://bundler.io/):
 
-* install S2I from https://github.com/openshift/source-to-image
+~~~bash
+$ bundle install
+~~~
 
-* perform a source to image build on your Jekyll site source
+Run `jekyll` commands through Bundler to ensure you're using the right versions:
 
-  ```
-  # s2i build git://<source code> jekyll-nginx-18-centos7 <application image>
-  ```
+~~~bash
+$ bundle exec jekyll serve
+~~~
 
-3. run the resulting application image
+## Editing
 
-  ```
-  # docker run -p 8080:8080 <application image>
-  ```
+Frisco is already optimised for adding, updating and removing pages, staff, advice, company details and footer elements in CloudCannon.
+
+### Posts
+
+* Add, update or remove a post in the *Posts* collection.
+* The **Staff Author** field links to members in the **Staff Members** collection.
+* Documentation pages are organised in the navigation by category, with URLs based on the path inside the `_docs` folder.
+* Change the defaults when new posts are created in `_posts/_defaults.md`.
+
+### Contact Form
+
+* Preconfigured to work with CloudCannon, but easily changed to another provider (e.g. [FormSpree](https://formspree.io/)).
+
+### Staff
+
+* Reused around the site to save multiple editing locations.
+
+### Footer
+
+* Exposed as a data file to give clients better access.
+* Set in the *Data* / *Navigation* section.
+
+### Footer
+
+* Exposed as a data file to give clients better access.
+* Set in the *Data* / *Footer* section.
